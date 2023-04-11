@@ -10,4 +10,8 @@ export const trendingTagsContainer = css`
     border: 1px solid white;
     padding: 0 20px;
   }
+
+  .selected {
+    background-color: blue;
+  }
 `
