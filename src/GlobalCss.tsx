@@ -7,12 +7,16 @@ export const GlobalCss = () => (
   <Global
     styles={css`
       * {
-        color: ${colors.textWhite} !important;
+        color: ${colors.textWhite};
       }
 
       body {
         margin: 0;
         background-color: ${colors.bgPrimary};
+
+        h1 {
+          color: ${colors.textWhite};
+        }
       }
 
       .ant-layout-header {
