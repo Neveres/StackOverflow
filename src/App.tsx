@@ -43,9 +43,9 @@ const App = () => {
       <AppContext.Provider value={valueOfAppContext}>
         <Header>
           <Search />
-          <TrendingTags />
         </Header>
         <Content>
+          <TrendingTags />
           <QuestionListing />
         </Content>
       </AppContext.Provider>
