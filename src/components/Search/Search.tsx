@@ -1,32 +1,31 @@
 /** @jsxImportSource @emotion/react */
-import React, { useState, useCallback } from 'react'
+import React, { useCallback, useContext } from 'react'
 import { Input } from 'antd'
+import { AppContext } from 'src/components'
 import { searchContainer } from './styles'
 
 const Search = () => {
-  const [value, setValue] = useState('')
-
-  const onSearch = (value: string) => {
-    console.log(value)
-  }
+  const {
+    state: { searchTag },
+    actions: { setSearchTag },
+  } = useContext(AppContext)
 
   const onChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValue(event.target.value)
+      setSearchTag(event.target.value)
     },
-    [setValue],
+    [setSearchTag],
   )
 
   return (
     <Input.Search
       css={searchContainer}
-      value={value}
-      placeholder="Input search tags"
+      value={searchTag}
+      placeholder="Input search tag"
       allowClear
       enterButton="Search"
       size="large"
       onChange={onChange}
-      onSearch={onSearch}
     />
   )
 }
