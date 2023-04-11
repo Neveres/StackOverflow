@@ -1,12 +1,22 @@
 import React from 'react'
+import { Layout } from 'antd'
 import { Search, TrendingTags, QuestionListing } from 'src/components'
+import { GlobalCss } from './GlobalCss'
+
+const { Header, Content } = Layout
 
 const App = () => {
   return (
     <div className="App">
-      <Search />
-      <TrendingTags />
-      <QuestionListing />
+      <Header>
+        <Search />
+        <TrendingTags />
+      </Header>
+      <Content>
+        <QuestionListing />
+      </Content>
+
+      <GlobalCss />
     </div>
   )
 }
