@@ -4,6 +4,8 @@ import { useTags } from 'src/hooks'
 import { AppContext } from 'src/components'
 import { trendingTagsContainer } from './styles'
 
+const DEFAULT_INDEX_OF_SELECTED_TAG = 0
+
 const TrendingTags = () => {
   const { tags } = useTags()
   const {
@@ -39,7 +41,7 @@ const TrendingTags = () => {
 
   useEffect(() => {
     if (!selectedTag && tags.length) {
-      setSelectedTag(tags[0])
+      setSelectedTag(tags[DEFAULT_INDEX_OF_SELECTED_TAG])
     }
   }, [selectedTag, setSelectedTag, tags, tags.length])
 
