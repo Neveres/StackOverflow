@@ -1,5 +1,7 @@
+/** @jsxImportSource @emotion/react */
 import React, { useState, useCallback } from 'react'
 import { Input } from 'antd'
+import { searchContainer } from './styles'
 
 const Search = () => {
   const [value, setValue] = useState('')
@@ -17,6 +19,7 @@ const Search = () => {
 
   return (
     <Input.Search
+      css={searchContainer}
       value={value}
       placeholder="Input search tags"
       allowClear

@@ -7,7 +7,7 @@ export const GlobalCss = () => (
   <Global
     styles={css`
       * {
-        color: ${colors.textWhite};
+        color: ${colors.textWhite} !important;
       }
 
       body {
