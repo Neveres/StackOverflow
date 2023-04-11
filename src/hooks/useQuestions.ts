@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { httpClient } from 'src/libraries'
 
-export const useQuestions = () => {
+export const useQuestions = (selectedTag: string) => {
   const [questions, setQuestions] = useState([] as IObject[])
   const [page, setPage] = useState(1)
   const [hasMore, setHasMore] = useState(true)
@@ -21,6 +21,7 @@ export const useQuestions = () => {
           site: 'stackoverflow',
           pagesize: 20,
           page,
+          tagged: selectedTag,
         },
       })
       .then((response) => {
@@ -34,7 +35,7 @@ export const useQuestions = () => {
           setHasMore(false)
         }
       })
-  }, [page])
+  }, [page, questions, selectedTag])
 
   return { questions }
 }
