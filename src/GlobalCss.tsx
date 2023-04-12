@@ -28,6 +28,16 @@ export const GlobalCss = () => (
       .ant-layout-content {
         padding: 80px;
       }
+
+      @media (max-width: 480px) {
+        .ant-layout-header {
+          padding: 0 20px;
+        }
+
+        .ant-layout-content {
+          padding: 80px 20px;
+        }
+      }
     `}
   />
 )

@@ -40,6 +40,12 @@ export const questionsContainer = css`
           border: 1px solid green;
         }
       }
+
+      @media (max-width: 480px) {
+        .question-count-container {
+          width: 80%;
+        }
+      }
     }
 
     .question-owner {
@@ -51,6 +57,16 @@ export const questionsContainer = css`
         height: 80px;
         border-radius: 50%;
         margin-bottom: 10px;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .question-container {
+      padding: 0 10px 10px 10px;
+
+      .question-detail {
+        margin-right: 5px;
       }
     }
   }
