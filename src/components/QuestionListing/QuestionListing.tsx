@@ -5,6 +5,9 @@ import { useQuestions } from 'src/hooks'
 import { AppContext, Spinner } from 'src/components'
 import { questionsContainer } from './styles'
 
+const THRESHOLD_OF_SCORE = 0
+const THRESHOLD_OF_ANSWER_COUNT = 1
+
 const QuestionListing = () => {
   const {
     state: { selectedTag, page },
@@ -30,17 +33,17 @@ const QuestionListing = () => {
                 <div className="question-count-header">Score</div>
                 <div
                   className={`question-score ${
-                    question.score < 0 ? 'negative' : ''
+                    question.score < THRESHOLD_OF_SCORE ? 'negative' : ''
                   }`}
                 >
                   {question.score}
                 </div>
               </div>
               <div>
-                <div className="question-count-header">Ansers</div>
+                <div className="question-count-header">Answers</div>
                 <div
                   className={`question-answer-count ${
-                    question.answer_count > 1
+                    question.answer_count >= THRESHOLD_OF_ANSWER_COUNT
                       ? question.is_answered
                         ? 'fulfilled'
                         : 'pending'
