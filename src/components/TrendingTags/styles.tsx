@@ -5,8 +5,8 @@ export const trendingTagsContainer = css`
 
   .tagContainer {
     display: inline-block;
-    margin-right: 10px;
-    border-radius: 25px;
+    margin: 0 10px 15px 0;
+    border-radius: 10px;
     border: 1px solid white;
     padding: 10px 20px;
     cursor: pointer;
