@@ -13,12 +13,16 @@ const TrendingTags = () => {
   } = useContext(AppContext)
   const { tags } = useTags(searchTag)
 
+  const resetPage = useCallback(() => {
+    setPage(1)
+  }, [setPage])
+
   const onClickTag = useCallback(
     (tag: string) => {
       setSelectedTag(tag)
-      setPage(1)
+      resetPage()
     },
-    [setPage, setSelectedTag],
+    [resetPage, setSelectedTag],
   )
 
   const Tags = useMemo(
@@ -38,6 +42,7 @@ const TrendingTags = () => {
   useEffect(() => {
     if (tags.length) {
       setSelectedTag(tags[DEFAULT_INDEX_OF_SELECTED_TAG])
+      resetPage()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tags])
