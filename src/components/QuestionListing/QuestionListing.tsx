@@ -1,14 +1,17 @@
 /** @jsxImportSource @emotion/react */
-import React, { useContext, useMemo } from 'react'
+import React, { useContext, useMemo, useCallback } from 'react'
+import InfiniteScroll from 'react-infinite-scroll-component'
 import { useQuestions } from 'src/hooks'
-import { AppContext } from 'src/components'
+import { AppContext, Spinner } from 'src/components'
 import { questionsContainer } from './styles'
 
 const QuestionListing = () => {
   const {
-    state: { selectedTag },
+    state: { selectedTag, page },
+    actions: { setPage },
   } = useContext(AppContext)
-  const { questions } = useQuestions(selectedTag)
+
+  const { questions, hasMore } = useQuestions(selectedTag, page)
 
   const Questions = useMemo(
     () =>
@@ -65,7 +68,23 @@ const QuestionListing = () => {
     [questions],
   )
 
-  return <div css={questionsContainer}>{Questions}</div>
+  const fetchMoreQuestions = useCallback(() => {
+    if (hasMore) {
+      setPage(page + 1)
+    }
+  }, [hasMore, page, setPage])
+
+  return (
+    <InfiniteScroll
+      css={questionsContainer}
+      dataLength={questions.length}
+      next={fetchMoreQuestions}
+      hasMore={hasMore}
+      loader={<Spinner />}
+    >
+      {Questions}
+    </InfiniteScroll>
+  )
 }
 
 export default QuestionListing
