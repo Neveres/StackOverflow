@@ -22,10 +22,11 @@ export const GlobalCss = () => (
         position: fixed;
         top: 0;
         width: 100%;
+        padding: 0 80px;
       }
 
       .ant-layout-content {
-        padding: 0 50px;
+        padding: 80px;
       }
     `}
   />

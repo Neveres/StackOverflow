@@ -8,7 +8,8 @@ export const trendingTagsContainer = css`
     margin-right: 10px;
     border-radius: 25px;
     border: 1px solid white;
-    padding: 0 20px;
+    padding: 10px 20px;
+    cursor: pointer;
   }
 
   .selected {
