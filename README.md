@@ -25,4 +25,4 @@ $ cd StackOverflow
 $ yarn && yarn start
 ```
 
-Navigate to http://localhost:8080, and you should now see app
+Navigate to http://localhost:3000, and you should now see app
