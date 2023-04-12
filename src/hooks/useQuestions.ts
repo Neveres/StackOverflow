@@ -22,9 +22,11 @@ export const useQuestions = (selectedTag: string, page: number) => {
           const {
             data: { items, has_more },
           } = response
+
           if (!has_more) {
             setHasMore(false)
           }
+
           if (page === 1) {
             setQuestions(items)
           } else {
