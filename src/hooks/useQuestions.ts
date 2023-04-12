@@ -13,29 +13,31 @@ export const useQuestions = (selectedTag: string) => {
   }, [hasMore, page])
 
   useEffect(() => {
-    httpClient
-      .get('questions', {
-        params: {
-          order: 'desc',
-          sort: 'activity',
-          site: 'stackoverflow',
-          pagesize: 20,
-          page,
-          tagged: selectedTag,
-        },
-      })
-      .then((response) => {
-        const {
-          data: { items, has_more },
-        } = response
+    if (selectedTag) {
+      httpClient
+        .get('questions', {
+          params: {
+            order: 'desc',
+            sort: 'activity',
+            site: 'stackoverflow',
+            pagesize: 20,
+            page,
+            tagged: selectedTag,
+          },
+        })
+        .then((response) => {
+          const {
+            data: { items, has_more },
+          } = response
 
-        if (has_more) {
-          setQuestions([...questions, ...items])
-        } else {
-          setHasMore(false)
-        }
-      })
-  }, [page, questions, selectedTag])
+          if (has_more) {
+            setQuestions([...questions, ...items])
+          } else {
+            setHasMore(false)
+          }
+        })
+    }
+  }, [page, selectedTag])
 
   return { questions }
 }
