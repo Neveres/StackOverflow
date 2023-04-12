@@ -1,16 +1,9 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { httpClient } from 'src/libraries'
 
-export const useQuestions = (selectedTag: string) => {
+export const useQuestions = (selectedTag: string, page: number) => {
   const [questions, setQuestions] = useState([] as IObject[])
-  const [page, setPage] = useState(1)
   const [hasMore, setHasMore] = useState(true)
-
-  const increasePage = useCallback(() => {
-    if (hasMore) {
-      setPage(page + 1)
-    }
-  }, [hasMore, page])
 
   useEffect(() => {
     if (selectedTag) {
@@ -29,15 +22,18 @@ export const useQuestions = (selectedTag: string) => {
           const {
             data: { items, has_more },
           } = response
-
-          if (has_more) {
-            setQuestions([...questions, ...items])
-          } else {
+          if (!has_more) {
             setHasMore(false)
+          }
+          if (page === 1) {
+            setQuestions(items)
+          } else {
+            setQuestions([...questions, ...items])
           }
         })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, selectedTag])
 
-  return { questions }
+  return { questions, hasMore }
 }
