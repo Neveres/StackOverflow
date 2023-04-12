@@ -10,14 +10,15 @@ const TrendingTags = () => {
   const { tags } = useTags()
   const {
     state: { selectedTag, searchTag },
-    actions: { setSelectedTag },
+    actions: { setSelectedTag, setPage },
   } = useContext(AppContext)
 
   const onClickTag = useCallback(
     (tag: string) => {
       setSelectedTag(tag)
+      setPage(1)
     },
-    [setSelectedTag],
+    [setPage, setSelectedTag],
   )
 
   const Tags = useMemo(
@@ -26,7 +27,6 @@ const TrendingTags = () => {
         .filter((tag) => {
           return tag.includes(searchTag)
         })
-
         .map((tag) => (
           <div
             key={tag}
@@ -43,7 +43,7 @@ const TrendingTags = () => {
     if (!selectedTag && tags.length) {
       setSelectedTag(tags[DEFAULT_INDEX_OF_SELECTED_TAG])
     }
-  }, [selectedTag, setSelectedTag, tags, tags.length])
+  }, [selectedTag, setSelectedTag, tags])
 
   return (
     <div css={trendingTagsContainer}>
