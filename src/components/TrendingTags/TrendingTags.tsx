@@ -7,11 +7,11 @@ import { trendingTagsContainer } from './styles'
 const DEFAULT_INDEX_OF_SELECTED_TAG = 0
 
 const TrendingTags = () => {
-  const { tags } = useTags()
   const {
     state: { selectedTag, searchTag },
     actions: { setSelectedTag, setPage },
   } = useContext(AppContext)
+  const { tags } = useTags(searchTag)
 
   const onClickTag = useCallback(
     (tag: string) => {
@@ -23,27 +23,24 @@ const TrendingTags = () => {
 
   const Tags = useMemo(
     () =>
-      tags
-        .filter((tag) => {
-          return tag.includes(searchTag)
-        })
-        .map((tag) => (
-          <div
-            key={tag}
-            className={`tagContainer ${selectedTag === tag ? 'selected' : ''}`}
-            onClick={onClickTag.bind(null, tag)}
-          >
-            {tag}
-          </div>
-        )),
-    [onClickTag, searchTag, selectedTag, tags],
+      tags.map((tag) => (
+        <div
+          key={tag}
+          className={`tagContainer ${selectedTag === tag ? 'selected' : ''}`}
+          onClick={onClickTag.bind(null, tag)}
+        >
+          {tag}
+        </div>
+      )),
+    [onClickTag, selectedTag, tags],
   )
 
   useEffect(() => {
-    if (!selectedTag && tags.length) {
+    if (tags.length) {
       setSelectedTag(tags[DEFAULT_INDEX_OF_SELECTED_TAG])
     }
-  }, [selectedTag, setSelectedTag, tags])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tags])
 
   return (
     <div css={trendingTagsContainer}>
