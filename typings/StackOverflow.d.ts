@@ -6,6 +6,7 @@ declare namespace StackOverflow {
     type State = {
       searchTag: string
       selectedTag: string
+      page: numer
     }
 
     type Action = State & {
@@ -15,6 +16,7 @@ declare namespace StackOverflow {
     type Actions = {
       setSearchTag(searchTag: string): void
       setSelectedTag(selectedTag: string): void
+      setPage(page: number): void
     }
   }
 }

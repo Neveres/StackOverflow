@@ -6,7 +6,12 @@ import {
   QuestionListing,
   AppContext,
 } from 'src/components'
-import { reducer, SET_SEARCH_TAG, SET_SELECTED_TAG } from 'src/libraries'
+import {
+  reducer,
+  SET_SEARCH_TAG,
+  SET_SELECTED_TAG,
+  SET_PAGE,
+} from 'src/libraries'
 import { GlobalCss } from './GlobalCss'
 
 const { Header, Content } = Layout
@@ -14,6 +19,7 @@ const { Header, Content } = Layout
 const initialState = {
   searchTag: '',
   selectedTag: '',
+  page: 1,
 }
 
 const App = () => {
@@ -25,6 +31,9 @@ const App = () => {
       },
       setSelectedTag(selectedTag: string) {
         dispatch({ type: SET_SELECTED_TAG, ...state, selectedTag })
+      },
+      setPage(page: number) {
+        dispatch({ type: SET_PAGE, ...state, page })
       },
     }),
     [state],
