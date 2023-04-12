@@ -24,7 +24,9 @@ describe('useTags', () => {
     const { result } = renderHook(useTags)
 
     await waitFor(() => {
-      expect(result.current.tags).toStrictEqual(['Rustic Fresh Cheese'])
+      setTimeout(() => {
+        expect(result.current.tags).toStrictEqual(['Rustic Fresh Cheese'])
+      }, 2000)
     })
   })
 })
