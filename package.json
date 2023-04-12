@@ -7,6 +7,7 @@
     "@emotion/styled": "^11.10.6",
     "@testing-library/jest-dom": "^5.0.0",
     "@testing-library/react": "^13.0.0",
+    "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/user-event": "^14.0.0",
     "@types/jest": "^29.0.0",
     "@types/node": "^18.0.0",
@@ -66,5 +67,10 @@
   },
   "engines": {
     "node": "^16.10.0 || >=17.0.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "axios": "axios/dist/node/axios.cjs"
+    }
   }
 }
