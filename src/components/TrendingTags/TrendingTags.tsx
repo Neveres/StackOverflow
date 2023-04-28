@@ -49,7 +49,7 @@ const TrendingTags = () => {
 
   return (
     <div css={trendingTagsContainer}>
-      <h1>Trending</h1>
+      <h1>Trending Tags</h1>
       <div>{Tags}</div>
     </div>
   )
