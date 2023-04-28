@@ -29,7 +29,7 @@ const QuestionListing = () => {
           <div className="question-detail">
             <div className="question-title">{question.title}</div>
             <div className="question-count-container">
-              <div>
+              <div className="question-count-container-col">
                 <div className="question-count-header">Score</div>
                 <div
                   className={`question-score ${
@@ -39,7 +39,7 @@ const QuestionListing = () => {
                   {question.score}
                 </div>
               </div>
-              <div>
+              <div className="question-count-container-col">
                 <div className="question-count-header">Answers</div>
                 <div
                   className={`question-answer-count ${
@@ -53,7 +53,7 @@ const QuestionListing = () => {
                   {question.answer_count}
                 </div>
               </div>
-              <div>
+              <div className="question-count-container-col">
                 <div className="question-count-header">Viewed</div>
                 <div className="question-view-count">{question.view_count}</div>
               </div>
