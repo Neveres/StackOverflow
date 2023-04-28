@@ -17,12 +17,16 @@ export const questionsContainer = css`
       }
 
       .question-count-container {
-        width: 45%;
+        width: 60%;
         margin: auto;
         display: flex;
         justify-content: space-between;
         padding-top: 10px;
         text-align: center;
+
+        .question-count-container-col {
+          margin-right: 5px;
+        }
 
         .question-count-header {
           padding-bottom: 5px;
