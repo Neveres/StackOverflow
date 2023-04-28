@@ -13,6 +13,6 @@ export const trendingTagsContainer = css`
   }
 
   .selected {
-    background-color: blue;
+    background-color: #1890ff;
   }
 `

@@ -6,7 +6,7 @@ export const questionsContainer = css`
     display: flex;
     justify-content: space-between;
     padding: 0 20px 10px 20px;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid grey;
     margin-bottom: 10px;
 
     .question-detail {
@@ -25,6 +25,7 @@ export const questionsContainer = css`
         text-align: center;
 
         .question-count-header {
+          padding-bottom: 5px;
           color: #c11515;
         }
 
@@ -33,11 +34,11 @@ export const questionsContainer = css`
         }
 
         .question-answer-count.fulfilled {
-          background-color: green;
+          background-color: #1890ff;
         }
 
         .question-answer-count.pending {
-          border: 1px solid green;
+          border: 1px solid #1890ff;
         }
       }
 
